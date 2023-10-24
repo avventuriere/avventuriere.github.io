@@ -28,7 +28,7 @@ def create_markdown(entry, collection_name):
 
     md_filename = url_slug + ".md"
     html_filename = url_slug
-    pdf_filename = "files/" + url_slug + ".pdf"  # Generating PDF filename from url_slug
+    pdf_filename = url_slug + ".pdf"  # Generating PDF filename from url_slug
 
     # YAML variables
     md = "---\ntitle: \"" + title + '"\n'
