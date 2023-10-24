@@ -17,5 +17,8 @@
       {% endif %}
     </h2>
 
+    <!-- Formatted citation -->
+    <p>{{ post.author }} ({{ post.date | date: "%Y" }}). <i>{{ title }}</i>. <em>{{ post.venue }}</em>, {{ post.volume }}({{ post.number }}), {{ post.pages }}. <a href="{{ base_path }}/files/{{ post.pdf_filename }}">PDF</a></p>
+
   </article>
 </div>
