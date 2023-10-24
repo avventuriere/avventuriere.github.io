@@ -35,13 +35,13 @@ def create_markdown(entry, collection_name):
     paper_url = entry.get('url', '')
     
     if collection_name == 'publications':
-        citation = entry.get('author', '') + '. (' + entry.get('year', '') + '). ' + title + '. ' + venue + '.'
+        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. ' + venue + '.'
     elif collection_name == 'manuscripts':
-        citation = entry.get('author', '') + '. (' + entry.get('year', '') + '). ' + title + '. Unpublished manuscript.'
+        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. Unpublished manuscript.'
     elif collection_name == 'dissertation':
-        citation = entry.get('author', '') + '. (' + entry.get('year', '') + '). ' + title + '. Doctoral dissertation, ' + entry.get('school', '') + '.'
+        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. Doctoral dissertation, ' + entry.get('school', '') + '.'
     else:
-        citation = entry.get('author', '') + '. (' + entry.get('year', '') + '). ' + title + '.'
+        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '.'
     
     md_filename = url_slug + ".md"
     html_filename = url_slug
