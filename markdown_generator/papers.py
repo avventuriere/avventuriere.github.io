@@ -29,7 +29,7 @@ for entry in bib_database.entries:
     title = entry.get('title', '')
     venue = entry.get('journal', '') if entry_type == 'article' else 'Manuscript'
     paper_url = entry.get('url', '')
-    citation = entry.get('author', '') + ', ' + title + ', ' + venue + ', ' + entry.get('year', '')
+    citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. ' + venue + '.'
 
     md_filename = url_slug + ".md"
     html_filename = url_slug
