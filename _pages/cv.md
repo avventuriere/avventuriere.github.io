@@ -11,21 +11,26 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* Specialist (= M.A.) in Linguistics, Lomonosov Moscow State University, 2013
+* M.A. in Linguistics, University of Connecticut, 2021
+* Ph.D. in Linguistics, University of Connecticut, 2023 
+
+Academic positions
+======
+* 2021-pres.: Post-doctoral associate
+  * New York University Abu Dhabi
+  * Program in Psychology, Division of Science
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* 2015-2021: Graduate Assistant
+  * University of Connecticut
+  * Department of Linguistics
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* 2019-2021: Research Assistant
+  * Brandeis University
+  * Department of Computer Science
+
   
 Skills
 ======
