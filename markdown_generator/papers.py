@@ -28,7 +28,7 @@ def create_markdown(entry, collection_name):
     elif collection_name == 'manuscripts':
         venue = 'Unpublished Manuscript'
     elif collection_name == 'dissertation':
-        venue = 'Doctoral Dissertation, ' + entry.get('school', '')
+        venue = 'Doctoral Dissertation, ' + entry.get('school', '') + ', ' + entry.get('address', '')
     else:
         venue = 'N/A'  # Or some other default value
     
@@ -37,9 +37,9 @@ def create_markdown(entry, collection_name):
     if collection_name == 'publications':
         citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. ' + venue + '.'
     elif collection_name == 'manuscripts':
-        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. Unpublished manuscript.'
+        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. ' + entry.get('location', '') + '. ' + entry.get('note', '') + '.'
     elif collection_name == 'dissertation':
-        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. Doctoral dissertation, ' + entry.get('school', '') + '.'
+        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. Doctoral dissertation. ' + entry.get('school', '') + '. ' + entry.get('address', '') + '.'
     else:
         citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '.'
     
@@ -88,3 +88,4 @@ for entry in bib_database.entries:
         create_markdown(entry, 'manuscripts')
     elif entry_type == 'phdthesis':
         create_markdown(entry, 'dissertation')
+
