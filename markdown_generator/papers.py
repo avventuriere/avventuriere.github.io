@@ -1,6 +1,5 @@
-# Import necessary libraries
-import bibtexparser
 import os
+import bibtexparser
 
 # Load your .bib file
 with open('papers.bib') as bibtex_file:
@@ -17,64 +16,71 @@ def html_escape(text):
     """Produce entities within text."""
     return "".join(html_escape_table.get(c,c) for c in text)
 
-# Function to create markdown files
-def create_markdown(entry, collection_name):
-    pub_date = entry.get('year', '') + '-01-01'  # Assumes January 1 if no date is provided
-    url_slug = entry.get('ID', '').replace(":", "-").replace("/", "-").lower()  # Creating slug from BibTeX ID
+def create_citation(entry, collection_name):
+    authors_raw = entry.get('author', '')
+    authors_list = authors_raw.split(' and ')
+    formatted_authors = []
+    for author in authors_list:
+        if ',' in author:
+            last, first = author.split(',', 1)
+            formatted_authors.append(f'{first.strip()} {last.strip()}')
+        else:
+            formatted_authors.append(author.strip())
+    formatted_authors_str = ', '.join(formatted_authors)
     title = entry.get('title', '')
+    year = entry.get('year', '')
     
     if collection_name == 'publications':
         venue = entry.get('journal', '')
     elif collection_name == 'manuscripts':
         venue = 'Unpublished Manuscript'
     elif collection_name == 'dissertation':
-        venue = 'Doctoral Dissertation, ' + entry.get('school', '') + ', ' + entry.get('address', '')
-    else:
-        venue = 'N/A'  # Or some other default value
+        venue = f'Doctoral Dissertation, {entry.get("school", "")}, {entry.get("address", "")}'
     
+    return f"{formatted_authors_str}. {year}. {title}. {venue}."
+
+# Function to create markdown files
+def create_markdown(entry, collection_name):
+    pub_date = entry.get('year', '') + '-01-01'
+    url_slug = entry.get('ID', '').replace(":", "-").replace("/", "-").lower()
+    title = entry.get('title', '')
     paper_url = entry.get('url', '')
-    
-    if collection_name == 'publications':
-        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. ' + venue + '.'
-    elif collection_name == 'manuscripts':
-        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. ' + entry.get('location', '') + '. ' + entry.get('note', '') + '.'
-    elif collection_name == 'dissertation':
-        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. Doctoral dissertation. ' + entry.get('school', '') + '. ' + entry.get('address', '') + '.'
-    else:
-        citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '.'
+    citation = create_citation(entry, collection_name)
     
     md_filename = url_slug + ".md"
     html_filename = url_slug
-    pdf_filename = url_slug + ".pdf"  # Generating PDF filename from url_slug
-
-    # YAML variables
-    md = "---\ntitle: \"" + title + '"\n'
-    md += f"""collection: {collection_name}"""
-    md += """\npermalink: /""" + collection_name + "/" + html_filename
-    md += f"\npdf_filename: {pdf_filename}"  # Adding pdf_filename to YAML
-
-    # Assuming abstract is in the 'abstract' field of BibTeX
-    excerpt = entry.get('abstract', '')
-    if len(excerpt) > 5:
-        md += "\nexcerpt: '" + html_escape(excerpt) + "'"
-
-    md += "\ndate: " + pub_date
-    md += "\nvenue: '" + html_escape(venue) + "'"
-
-    if len(paper_url) > 5:
-        md += "\npaperurl: '" + paper_url + "'"
-
-    md += "\ncitation: '" + html_escape(citation) + "'"
-    md += "\n---"
-
-    # Markdown description for individual page
-    if len(excerpt) > 5:
-        md += "\n" + html_escape(excerpt) + "\n"
-
-    md += "\nRecommended citation: " + citation
-
-    md_filename = os.path.basename(md_filename)
+    pdf_filename = url_slug + ".pdf"
     
+    pdf_path = f"../files/{pdf_filename}"
+    pdf_exists = os.path.exists(pdf_path)
+    
+    md = (
+        f"---\n"
+        f"title: \"{title}\"\n"
+        f"collection: {collection_name}\n"
+    )
+    
+    if pdf_exists:
+        md += (
+            f"permalink: /{collection_name}/{html_filename}\n"
+            f"pdf_filename: {pdf_filename}\n"
+        )
+    
+    md += (
+        f"date: {pub_date}\n"
+        f"venue: '{html_escape(entry.get('journal', ''))}'\n"
+        f"citation: '{html_escape(citation)}'\n"
+        "---\n"
+    )
+    
+    if len(entry.get('abstract', '')) > 5:
+        md += f"\n{html_escape(entry.get('abstract', ''))}\n"
+    
+    if paper_url:
+        md += f"\n[Read the paper]({paper_url})\n"
+    
+    md += f"\nRecommended citation: {citation}"
+
     os.makedirs(f"../_{collection_name}/", exist_ok=True)
     with open(f"../_{collection_name}/" + md_filename, 'w') as f:
         f.write(md)
@@ -88,4 +94,3 @@ for entry in bib_database.entries:
         create_markdown(entry, 'manuscripts')
     elif entry_type == 'phdthesis':
         create_markdown(entry, 'dissertation')
-
