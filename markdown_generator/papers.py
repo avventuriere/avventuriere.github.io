@@ -24,7 +24,7 @@ for entry in bib_database.entries:
     if entry_type not in ['article', 'unpublished']:
         continue  # Skip entries that are not journal articles or manuscripts
 
-    pub_date = entry.get('year', '')  # Assumes January 1 if no date is provided
+    pub_date = entry.get('year', '') + '-01-01'  # Assumes January 1 if no date is provided
     url_slug = entry.get('ID', '').replace(":", "-").replace("/", "-").lower()  # Creating slug from BibTeX ID
     title = entry.get('title', '')
     venue = entry.get('journal', '') if entry_type == 'article' else 'Manuscript'
