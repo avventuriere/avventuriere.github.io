@@ -1,1 +1,1 @@
-A Github Pages template for my academic website. The template was forked from academicpages/academicpages.
+My academic website. The template was forked from academicpages/academicpages and modified.
