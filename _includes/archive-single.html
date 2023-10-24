@@ -10,7 +10,14 @@
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
 
     <!-- Formatted citation -->
-    {{ post.citation }} <a href="{{ base_path }}/files/{{ post.pdf_filename }}">PDF</a><br>
+    {{ post.citation }}
+    {% if post.pdf_filename %}
+      <a href="{{ base_path }}/files/{{ post.pdf_filename }}">PDF</a>
+    {% endif %}
+    {% if post.url %}
+      | <a href="{{ post.url }}">URL</a>
+    {% endif %}
+    <br>
 
   </article>
 </div>

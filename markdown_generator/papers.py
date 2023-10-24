@@ -65,6 +65,9 @@ def create_markdown(entry, collection_name):
             f"permalink: /{collection_name}/{html_filename}\n"
             f"pdf_filename: {pdf_filename}\n"
         )
+
+    if paper_url:
+        md += f"url: {paper_url})\n"
     
     md += (
         f"date: {pub_date}\n"
@@ -76,8 +79,6 @@ def create_markdown(entry, collection_name):
     if len(entry.get('abstract', '')) > 5:
         md += f"\n{html_escape(entry.get('abstract', ''))}\n"
     
-    if paper_url:
-        md += f"\n[Read the paper]({paper_url})\n"
     
     md += f"\nRecommended citation: {citation}"
 
