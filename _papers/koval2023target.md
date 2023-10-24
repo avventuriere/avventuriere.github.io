@@ -5,5 +5,6 @@ permalink: /paper/koval2023target
 date: 2023-01-01
 venue: 'Manuscript'
 citation: 'Koval, Pasha and Sprouse, Jon. 2023. The Target of Relative Clause Extraposition: An Experimental Investigation of C-command Effects. Manuscript.'
+pdf_filename: 'koval&sprouse.2023.the.target.of.RCE.pdf'
 ---
 Recommended citation: Koval, Pasha and Sprouse, Jon. 2023. The Target of Relative Clause Extraposition: An Experimental Investigation of C-command Effects. Manuscript.
