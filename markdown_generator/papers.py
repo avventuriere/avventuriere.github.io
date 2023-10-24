@@ -22,10 +22,27 @@ def create_markdown(entry, collection_name):
     pub_date = entry.get('year', '') + '-01-01'  # Assumes January 1 if no date is provided
     url_slug = entry.get('ID', '').replace(":", "-").replace("/", "-").lower()  # Creating slug from BibTeX ID
     title = entry.get('title', '')
-    venue = entry.get('journal', '') if collection_name == 'publications' else 'Manuscript'
+    
+    if collection_name == 'publications':
+        venue = entry.get('journal', '')
+    elif collection_name == 'manuscripts':
+        venue = 'Unpublished Manuscript'
+    elif collection_name == 'dissertation':
+        venue = 'Doctoral Dissertation, ' + entry.get('school', '')
+    else:
+        venue = 'N/A'  # Or some other default value
+    
     paper_url = entry.get('url', '')
-    citation = entry.get('author', '') + '. ' + entry.get('year', '') + '. ' + title + '. ' + venue + '.'
-
+    
+    if collection_name == 'publications':
+        citation = entry.get('author', '') + '. (' + entry.get('year', '') + '). ' + title + '. ' + venue + '.'
+    elif collection_name == 'manuscripts':
+        citation = entry.get('author', '') + '. (' + entry.get('year', '') + '). ' + title + '. Unpublished manuscript.'
+    elif collection_name == 'dissertation':
+        citation = entry.get('author', '') + '. (' + entry.get('year', '') + '). ' + title + '. Doctoral dissertation, ' + entry.get('school', '') + '.'
+    else:
+        citation = entry.get('author', '') + '. (' + entry.get('year', '') + '). ' + title + '.'
+    
     md_filename = url_slug + ".md"
     html_filename = url_slug
     pdf_filename = url_slug + ".pdf"  # Generating PDF filename from url_slug
