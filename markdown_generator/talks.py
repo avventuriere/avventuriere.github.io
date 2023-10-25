@@ -61,7 +61,7 @@ for row, item in talks.iterrows():
     year = str(item.year)
     dates = parse_dates(item.dates)
     permalink = f"{year}.{dates}.{filename_authors}.{title}"
-    citation = create_citation(citation_authors, year, title, item.type, item.conference, item.location, item.dates)
+    citation = create_citation(citation_authors, year, item.title, item.type, item.conference, item.location, item.dates)
     
     md_filename = f"{filename_authors}.{year}.{title}.md"
     html_filename = permalink
@@ -73,6 +73,8 @@ for row, item in talks.iterrows():
     md += 'venue: "' + item.conference + '"\n'
     md += "date: " + item.dates + ' ' + str(item.year) + "\n"
     md += 'location: "' + item.location + '"\n'
+    md += 'citation: "' + citation + '"\n'
+    
     md += "---\n"
     
     if isinstance(item.talk_url, str):

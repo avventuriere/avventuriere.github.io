@@ -6,4 +6,5 @@ permalink: /talks/2013.11.21.koval.internal.structure.and.meaning.of.tatar.adjec
 venue: "The 10th Conference on Typology and Grammar for Young Scholars"
 date: November 21--23 2013
 location: "Institute for Linguistic Studies RAS, St.Petersburg"
+citation: "Pasha Koval. 2013. Internal structure and meaning of Tatar adjectives (Talk). The 10th Conference on Typology and Grammar for Young Scholars. Institute for Linguistic Studies RAS, St.Petersburg. November 21--23."
 ---
