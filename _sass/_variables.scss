@@ -95,9 +95,9 @@ $link-color                 : $info-color;
 $link-color-hover           : mix(#000, $link-color, 25%);
 $link-color-visited         : mix(#fff, $link-color, 25%);
 $masthead-link-color        : $primary-color;
-$masthead-link-color-hover  : mix(#000, $primary-color, 25%);
+$masthead-link-color-hover  : mix(#227600, $primary-color, 25%);
 
-.greedy-nav .visible-links a:hover:before { background-color: mix(#bb0000, $primary-color, 25%); }
+.greedy-nav .visible-links a:hover:before { background-color: mix(#227600, $primary-color, 75%); }
 
 
 /*
