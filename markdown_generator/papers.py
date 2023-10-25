@@ -26,7 +26,15 @@ def create_citation(entry, collection_name):
             formatted_authors.append(f'{first.strip()} {last.strip()}')
         else:
             formatted_authors.append(author.strip())
-    formatted_authors_str = ', '.join(formatted_authors)
+    
+    # Adjusting the formatting of authors list
+    if len(formatted_authors) == 2:
+        formatted_authors_str = " and ".join(formatted_authors)
+    elif len(formatted_authors) > 2:
+        formatted_authors_str = ", ".join(formatted_authors[:-1]) + ", and " + formatted_authors[-1]
+    else:
+        formatted_authors_str = formatted_authors[0] if formatted_authors else ""
+    
     title = entry.get('title', '')
     year = entry.get('year', '')
     
@@ -38,6 +46,7 @@ def create_citation(entry, collection_name):
         venue = f'Doctoral Dissertation. {entry.get("school", "")}. {entry.get("address", "")}'
     
     return f"{formatted_authors_str}. {year}. {title}. {venue}."
+
 
 # Function to create markdown files
 def create_markdown(entry, collection_name):
