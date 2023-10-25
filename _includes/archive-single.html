@@ -11,11 +11,12 @@
 
     <!-- Formatted citation -->
     {{ post.citation }}
-    {% if post.pdf_filename %}
+    {% if post.pdf_filename and post.outside_url %}
+      <a href="{{ base_path }}/files/{{ post.pdf_filename }}">PDF</a> | <a href="{{ post.outside_url }}">URL</a>
+    {% elsif post.pdf_filename %}
       <a href="{{ base_path }}/files/{{ post.pdf_filename }}">PDF</a>
-    {% endif %}
-    {% if post.outside_url %}
-      | <a href="{{ post.outside_url }}">URL</a>
+    {% elsif post.outside_url %}
+      <a href="{{ post.outside_url }}">URL</a>
     {% endif %}
     <br>
 
