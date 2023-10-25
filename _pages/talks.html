@@ -5,6 +5,7 @@ permalink: /talks/
 author_profile: true
 ---
 
-{% for post in site.talks reversed %}
+{% assign sorted_talks = site.talks | sort: "permalink" | reverse %}
+{% for post in sorted_talks %}
   {% include archive-single-talk.html %}
 {% endfor %}
