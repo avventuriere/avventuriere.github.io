@@ -21,7 +21,18 @@ def parse_authors(authors_str):
     authors_list = authors_str.split(' and ')
     last_names = [author.split(', ')[0] for author in authors_list]
     filename_authors = '.'.join(last_names).replace(' ', '').lower()
-    return filename_authors
+    
+    formatted_authors = []
+    for author in authors_list:
+        last, first = author.split(', ')
+        formatted_authors.append(f'{first.strip()} {last.strip()}')
+    
+    if len(formatted_authors) > 1:
+        citation_authors = ', '.join(formatted_authors[:-1]) + ' and ' + formatted_authors[-1]
+    else:
+        citation_authors = formatted_authors[0]
+    
+    return filename_authors, citation_authors
 
 def parse_title(title):
     title = title.replace(",", "")
@@ -38,13 +49,19 @@ def month_to_number(month):
     months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     return str(months.index(month) + 1).zfill(2)
 
+def create_citation(authors, year, title, paper_type, venue, location, dates):
+    citation = f"{authors}. {year}. {title} ({paper_type}). {venue}. {location}. {dates}."
+    return citation
+
+
 # Generate markdown files
 for row, item in talks.iterrows():
-    filename_authors = parse_authors(item.author)
+    filename_authors, citation_authors = parse_authors(item.author)
     title = parse_title(item.title)
     year = str(item.year)
     dates = parse_dates(item.dates)
     permalink = f"{year}.{dates}.{filename_authors}.{title}"
+    citation = create_citation(citation_authors, year, title, item.type, item.conference, item.location, item.dates)
     
     md_filename = f"{filename_authors}.{year}.{title}.md"
     html_filename = permalink
