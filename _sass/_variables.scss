@@ -65,7 +65,7 @@ $primary-color              : #7a8288;
 $success-color              : #62c462;
 $warning-color              : #f89406;
 $danger-color               : #ee5f5b;
-$info-color                 : #52adc8;
+$info-color                 : #4169e1;
 
 /* brands */
 $behance-color              : #1769FF;
@@ -152,3 +152,5 @@ $box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
 $navicon-width              : 28px;
 $navicon-height             : 4px;
 $global-transition          : all 0.2s ease-in-out;
+
+.greedy-nav .visible-links a:hover:before { background-color: #014421; }
