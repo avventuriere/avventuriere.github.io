@@ -14,7 +14,7 @@
     {% if post.pdf_filename %}
       <a href="{{ base_path }}/files/{{ post.pdf_filename }}">PDF</a>
     {% endif %}
-    {% if post.url %}
+    {% if post.outside_url %}
       | <a href="{{ post.outside_url }}">URL</a>
     {% endif %}
     <br>
