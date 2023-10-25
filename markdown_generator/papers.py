@@ -33,9 +33,9 @@ def create_citation(entry, collection_name):
     if collection_name == 'publications':
         venue = entry.get('journal', '')
     elif collection_name == 'manuscripts':
-        venue = 'Unpublished Manuscript'
+        venue = entry.get('note', '') + ". " + entry.get('location', '')
     elif collection_name == 'dissertation':
-        venue = f'Doctoral Dissertation, {entry.get("school", "")}, {entry.get("address", "")}'
+        venue = f'Doctoral Dissertation. {entry.get("school", "")}. {entry.get("address", "")}'
     
     return f"{formatted_authors_str}. {year}. {title}. {venue}."
 
@@ -67,7 +67,7 @@ def create_markdown(entry, collection_name):
         )
 
     if paper_url:
-        md += f"url: {paper_url})\n"
+        md += f"outside_url: {paper_url})\n"
     
     md += (
         f"date: {pub_date}\n"
