@@ -31,7 +31,7 @@ def create_citation(entry, collection_name):
     year = entry.get('year', '')
     
     if collection_name == 'publications':
-        venue = entry.get('journal', '') + ', ' + entry.get('volume', '') + ', ' + entry.get('pages', '') + '.'
+        venue = entry.get('journal', '') + ', ' + entry.get('volume', '') + ', ' + entry.get('pages', '')
     elif collection_name == 'manuscripts':
         venue = entry.get('note', '') + ". " + entry.get('location', '')
     elif collection_name == 'dissertation':
