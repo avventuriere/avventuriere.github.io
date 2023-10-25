@@ -36,6 +36,7 @@ def parse_authors(authors_str):
     return filename_authors, citation_authors
 
 def parse_title(title):
+    title = title.replace(",", "")
     title = title.split(" ")
     return ".".join(title).lower()
 
