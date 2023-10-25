@@ -175,7 +175,7 @@
 .greedy-nav {
   position: relative;
   min-width: 250px;
-  background: $background-color;
+  background: mix(#fff, $primary-color, 50%);
 
   a {
     display: block;
@@ -327,7 +327,6 @@
 
     &:hover {
       text-decoration: underline;
-      border-bottom: 2px solid #014421;
     }
   }
 
