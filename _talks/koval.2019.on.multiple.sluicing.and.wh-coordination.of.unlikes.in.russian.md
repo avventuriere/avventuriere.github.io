@@ -2,7 +2,7 @@
 title: "On multiple sluicing and wh-coordination of unlikes in Russian"
 collection: talks
 type: "Poster"
-permalink: /talks/2019.05.3.koval.on.multiple.sluicing.and.wh-coordination.of.unlikes.in.russian
+permalink: /talks/2019.05.03.koval.on.multiple.sluicing.and.wh-coordination.of.unlikes.in.russian
 venue: "FASL 28"
 date: May 3--5 2019
 location: "Stony Brook University"

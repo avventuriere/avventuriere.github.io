@@ -43,7 +43,7 @@ def parse_dates(dates):
     first_date = dates.split('--')[0].strip()
     month, day = first_date.split(' ')
     month_number = month_to_number(month)
-    return f"{month_number}.{day}"
+    return f"{month_number}.{day.zfill(2)}"
 
 def month_to_number(month):
     months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
