@@ -11,11 +11,13 @@ redirect_from:
 
 # Education
 * Ph.D. in Linguistics, University of Connecticut, 2023 
-* M.A. in Linguistics, University of Connecticut, 2021
 * Specialist (= M.A.) in Linguistics, Lomonosov Moscow State University, 2013
 
 # Academic positions
-* 2021-pres.: Post-doctoral associate
+* 2024-pres.: Visiting Assistant Professor in Syntactic Theory and Processing
+  * Johns Hopkins University
+  * Department of Cognitive Science
+* 2021-2024: Post-doctoral associate
   * New York University Abu Dhabi
   * Program in Psychology, Division of Science
 
