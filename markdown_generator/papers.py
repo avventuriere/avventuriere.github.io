@@ -76,7 +76,7 @@ def create_markdown(entry, collection_name):
         )
 
     if paper_url:
-        md += f"outside_url: {paper_url})\n"
+        md += f"outside_url: {paper_url}\n"
     
     md += (
         f"date: {pub_date}\n"
