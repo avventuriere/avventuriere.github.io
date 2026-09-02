@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Pasha Koval"
 title_separator          : "-"
 name                     : &name "Pasha Koval"
-description              : &description "experimental syntactician at NYUAD"
+description              : &description "experimental syntactician at JHU"
 url                      : https://avventuriere.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "avventuriere.github.io"
@@ -84,10 +84,10 @@ author:
   avatar           : "profile.png"
   bio              : "Experimental syntactician"
   location         : 
-  employer         : "New York University Abu Dhabi"
+  employer         : "Johns Hopkins Univeristy"
   pubmed           : 
   googlescholar    : 
-  email            : "pasha.koval@nyu.edu"
+  email            : "pasha.koval@jhu.edu"
   researchgate     :  
   uri              : 
   bitbucket        : 
@@ -96,7 +96,7 @@ author:
   flickr           : 
   facebook         : 
   foursquare       : 
-  github           : "avventuriere"
+  github           : 
   google_plus      : 
   keybase          : 
   instagram        : 
